@@ -16,8 +16,9 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
   const [imdbUrl, setImdbUrl] = useState('');
   const [imdbId, setImdbId] = useState('');
 
-  const isFormValid =
-    title.trim() && imageUrl.trim() && imdbUrl.trim() && imdbId.trim();
+  const isFormValid = Boolean(
+    title.trim() && imageUrl.trim() && imdbUrl.trim() && imdbId.trim(),
+  );
 
   const reset = () => {
     setTitle('');
@@ -31,8 +32,8 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
     <form
       className="NewMovie"
       key={count}
-      onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+      onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
 
         onAdd({
           title: title,
